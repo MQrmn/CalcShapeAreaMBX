@@ -1,6 +1,6 @@
 ﻿namespace CalcShapeAreaMBX
 {
-    internal class CircleFabric : ShapeFabric
+    internal class CircleFabric
     {
         internal Shape Create(float radius)
         {

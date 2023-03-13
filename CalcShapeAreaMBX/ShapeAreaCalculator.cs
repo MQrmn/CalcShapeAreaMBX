@@ -11,7 +11,9 @@
 
         public float CalcArea(float[] sideLenghts, float[] corners)
         {
-            return 0f;
+            var fabric = new PoligonFabric();
+            var shape = fabric.GetShape(sideLenghts, corners);
+            return shape.GetArea();
         }
     }
 }
