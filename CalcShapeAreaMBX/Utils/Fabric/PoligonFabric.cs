@@ -36,10 +36,16 @@
         // Choosing shape type
         private ShapeTypes ChooseShape(int sidesCount, float[] sideLenghts, float[] corners)
         {
-            if (sidesCount == 4)
-                throw new Exception();
-            else
-                return ShapeTypes.Triangle;
+            return sidesCount switch
+            {
+                4 => ChooseQuadrilateral(sideLenghts, corners),
+                _ => ShapeTypes.Triangle
+            };
+        }
+
+        private ShapeTypes ChooseQuadrilateral(float[] sideLenghts, float[] corners)
+        {
+            return ShapeTypes.Square;
         }
 
         // Checking size of arrays
