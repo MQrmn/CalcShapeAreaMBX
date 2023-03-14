@@ -23,16 +23,6 @@
             return CreateShape(shapeType, sideLenghts, corners);
         }
 
-        // Creating shape by passed shape type
-        private Shape CreateShape(ShapeTypes type, float[] sideLenghts, float[] corners)
-        {
-            return type switch
-            {
-                ShapeTypes.Square => new Square(sideLenghts, corners),
-                _ => new Triangle(sideLenghts, corners)
-            };
-        }
-
         // Choosing shape type
         private ShapeTypes ChooseShape(int sidesCount, float[] sideLenghts, float[] corners)
         {
@@ -40,6 +30,16 @@
             {
                 4 => ChooseQuadrilateral(sideLenghts, corners),
                 _ => ShapeTypes.Triangle
+            };
+        }
+
+        // Creating shape by passed shape type
+        private Shape CreateShape(ShapeTypes type, float[] sideLenghts, float[] corners)
+        {
+            return type switch
+            {
+                ShapeTypes.Square => new Square(sideLenghts, corners),
+                _ => new Triangle(sideLenghts, corners)
             };
         }
 
