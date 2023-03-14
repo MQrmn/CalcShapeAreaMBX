@@ -2,6 +2,6 @@
 {
     internal abstract class Shape
     {
-        public abstract float GetArea();
+        internal abstract float GetArea();
     }
 }

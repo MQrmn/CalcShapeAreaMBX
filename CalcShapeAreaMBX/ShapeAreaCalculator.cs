@@ -2,6 +2,7 @@
 {
     public class ShapeAreaCalculator
     {
+
         public float CalcArea(float radius)
         {
             var fabric = new CircleFabric();
@@ -9,11 +10,24 @@
             return circle.GetArea();
         }
 
-        public float CalcArea(float[] sideLenghts, float[] corners)
+        public float CalcArea(float side1, float side2, float side3)
+        {
+            var sideLenghts = new List<float>() { side1, side2, side3 };
+            return CalcArea(sideLenghts);
+        }
+
+        public float CalcArea(List<float> sideLenghts)
         {
             var fabric = new PoligonFabric();
-            var shape = fabric.GetShape(sideLenghts, corners);
+            var shape = fabric.GetShape(sideLenghts);
             return shape.GetArea();
+        }
+
+        public bool IsRectangularTriangle(float side1, float side2, float side3)
+        {
+            var sideLenghts = new List<float>() { side1, side2, side3 };
+            Triangle triangle = new Triangle(sideLenghts);
+            return triangle.IsRectangular();
         }
     }
 }

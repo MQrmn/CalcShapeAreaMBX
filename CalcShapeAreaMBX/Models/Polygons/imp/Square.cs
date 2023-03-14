@@ -2,11 +2,11 @@
 {
     internal class Square : Polygon
     {
-        public Square(float[] sideLenghts, float[] corners) : base(sideLenghts, corners)
+        public Square(List<float> sideLenghts) : base(sideLenghts)
         {
         }
 
-        public override float GetArea()
+        internal override float GetArea()
         {
             throw new NotImplementedException();
         }

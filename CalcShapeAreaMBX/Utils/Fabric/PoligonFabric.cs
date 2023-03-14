@@ -9,50 +9,46 @@
         }
 
         // Top level method included checking parameters, choosing, creating shape
-        internal Shape GetShape(float[] sideLenghts, float[] corners)
+        internal Shape GetShape(List<float> sideLenghts)
         {
-            var sidesCount = sideLenghts.Length;
-            var cornersCount = corners.Length;
+            var sidesCount = sideLenghts.Count;
 
-            CheckParamsCount(sidesCount, cornersCount);
+            CheckArrLen(sidesCount);
             CheckForPositive(sideLenghts);
-            CheckForPositive(corners);
 
-            var shapeType = ChooseShape(sidesCount, sideLenghts, corners);
+            var shapeType = ChooseShape(sidesCount, sideLenghts);
 
-            return CreateShape(shapeType, sideLenghts, corners);
+            return CreateShape(shapeType, sideLenghts);
         }
 
         // Choosing shape type
-        private ShapeTypes ChooseShape(int sidesCount, float[] sideLenghts, float[] corners)
+        private ShapeTypes ChooseShape(int sidesCount, List<float> sideLenghts)
         {
             return sidesCount switch
             {
-                4 => ChooseQuadrilateral(sideLenghts, corners),
+                4 => ChooseQuadrilateral(sideLenghts),
                 _ => ShapeTypes.Triangle
             };
         }
 
         // Creating shape by passed shape type
-        private Shape CreateShape(ShapeTypes type, float[] sideLenghts, float[] corners)
+        private Shape CreateShape(ShapeTypes type, List<float> sideLenghts)
         {
             return type switch
             {
-                ShapeTypes.Square => new Square(sideLenghts, corners),
-                _ => new Triangle(sideLenghts, corners)
+                ShapeTypes.Square => new Square(sideLenghts),
+                _ => new Triangle(sideLenghts)
             };
         }
 
-        private ShapeTypes ChooseQuadrilateral(float[] sideLenghts, float[] corners)
+        private ShapeTypes ChooseQuadrilateral(List<float> sideLenghts)
         {
             return ShapeTypes.Square;
         }
 
         // Checking size of arrays
-        private void CheckParamsCount(int sidesCount, int cornersCount)
+        private void CheckArrLen(int sidesCount)
         {
-            if (sidesCount != cornersCount)
-                throw new Exception();
             if (sidesCount < 3)
                 throw new Exception();
             if (sidesCount > 4)
@@ -60,7 +56,7 @@
         }
 
         // Checking values for positivity
-        private void CheckForPositive(float[] floats)
+        private void CheckForPositive(List<float> floats)
         {
             foreach(var s in floats) 
             {
