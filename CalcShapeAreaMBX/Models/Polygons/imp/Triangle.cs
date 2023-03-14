@@ -21,7 +21,12 @@
 
         internal bool IsRectangular()
         {
-            return false;
+            var maxSideIndex = _sideLenghts.Max();
+            _sideLenghts.Remove(maxSideIndex);
+
+            var isRectangular = Math.Pow(maxSideIndex, 2) == Math.Pow(_sideLenghts[0], 2) + Math.Pow(_sideLenghts[1], 2);
+
+            return isRectangular;
         }
     }
 }

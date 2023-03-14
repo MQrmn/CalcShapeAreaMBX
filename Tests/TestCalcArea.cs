@@ -29,5 +29,18 @@ namespace Tests
 
             Assert.AreEqual(expectedArea, actualArea, 0.001);
         }
+
+        [TestMethod]
+        public void CheckIsRectangular()
+        {
+            var side1 = 3;
+            var side2 = 5;
+            var side3 = 4;
+
+            var shapeAreaCalculator = new ShapeAreaCalculator();
+            var actualArea = shapeAreaCalculator.IsRectangularTriangle(side1, side2, side3);
+
+            Assert.IsTrue(actualArea);
+        }
     }
 }
