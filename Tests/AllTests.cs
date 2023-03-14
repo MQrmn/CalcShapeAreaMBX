@@ -1,7 +1,7 @@
 namespace Tests
 {
     [TestClass]
-    public class TestAreaCalc
+    public class AllTests
     {
         [TestMethod]
         public void CalcCircle()
@@ -37,8 +37,8 @@ namespace Tests
             var side2 = 5;
             var side3 = 4;
 
-            var shapeAreaCalculator = new ShapeAreaCalculator();
-            var actualArea = shapeAreaCalculator.IsRectangularTriangle(side1, side2, side3);
+            var shapeChecker = new ShapeChecker();
+            var actualArea = shapeChecker.IsRectangularTriangle(side1, side2, side3);
 
             Assert.IsTrue(actualArea);
         }
