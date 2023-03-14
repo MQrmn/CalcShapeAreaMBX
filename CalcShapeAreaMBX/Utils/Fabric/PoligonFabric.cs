@@ -16,17 +16,17 @@
             CheckArrLen(sidesCount);
             CheckForPositive(sideLenghts);
 
-            var shapeType = ChooseShape(sidesCount, sideLenghts);
+            var shapeType = SelectShape(sidesCount, sideLenghts);
 
             return CreateShape(shapeType, sideLenghts);
         }
 
         // Choosing shape type
-        private ShapeTypes ChooseShape(int sidesCount, List<float> sideLenghts)
+        private ShapeTypes SelectShape(int sidesCount, List<float> sideLenghts)
         {
             return sidesCount switch
             {
-                4 => ChooseQuadrilateral(sideLenghts),
+                4 => SelectQuadrilateral(sideLenghts),
                 _ => ShapeTypes.Triangle
             };
         }
@@ -41,8 +41,13 @@
             };
         }
 
-        private ShapeTypes ChooseQuadrilateral(List<float> sideLenghts)
+        // Chosing a quadrilateral shape 
+        private ShapeTypes SelectQuadrilateral(List<float> sideLenghts)
         {
+            var selector = new QuadrilateralShapeSelector();
+
+
+
             return ShapeTypes.Square;
         }
 
