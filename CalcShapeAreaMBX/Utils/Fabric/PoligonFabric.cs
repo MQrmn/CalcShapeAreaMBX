@@ -2,26 +2,47 @@
 {
     internal class PoligonFabric
     {
+        enum ShapeTypes
+        {
+            Triangle,
+            Square
+        }
+
+        // Top level method included checking parameters, choosing, creating shape
         internal Shape GetShape(float[] sideLenghts, float[] corners)
         {
             var sidesCount = sideLenghts.Length;
             var cornersCount = corners.Length;
 
             CheckParamsCount(sidesCount, cornersCount);
-            CheckByPositive(sideLenghts);
-            CheckByPositive(corners);
+            CheckForPositive(sideLenghts);
+            CheckForPositive(corners);
 
-            return CreateShape(sidesCount, sideLenghts, corners);
+            var shapeType = ChooseShape(sidesCount, sideLenghts, corners);
+
+            return CreateShape(shapeType, sideLenghts, corners);
         }
 
-        private Shape CreateShape(int sidesCount, float[] sideLenghts, float[] corners)
+        // Creating shape by passed shape type
+        private Shape CreateShape(ShapeTypes type, float[] sideLenghts, float[] corners)
+        {
+            return type switch
+            {
+                ShapeTypes.Square => new Square(sideLenghts, corners),
+                _ => new Triangle(sideLenghts, corners)
+            };
+        }
+
+        // Choosing shape type
+        private ShapeTypes ChooseShape(int sidesCount, float[] sideLenghts, float[] corners)
         {
             if (sidesCount == 4)
                 throw new Exception();
             else
-                return new Triangle(sideLenghts, corners);
+                return ShapeTypes.Triangle;
         }
 
+        // Checking size of arrays
         private void CheckParamsCount(int sidesCount, int cornersCount)
         {
             if (sidesCount != cornersCount)
@@ -32,7 +53,8 @@
                 throw new Exception();
         }
 
-        private void CheckByPositive(float[] floats)
+        // Checking values for positivity
+        private void CheckForPositive(float[] floats)
         {
             foreach(var s in floats) 
             {
