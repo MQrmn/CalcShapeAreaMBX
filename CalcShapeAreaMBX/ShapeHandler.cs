@@ -8,7 +8,11 @@ namespace CalcShapeAreaMBX
         private static IShapeSelector _selector = new ShapeSelector();
         private static ShapeFabric _fabric = new ShapeFabric(_selector);
 
-        // Calc circle area
+        /// <summary>
+        /// Calculating the area of a circle
+        /// <returns>float</returns>
+        /// <param name="radius">float</param>
+        /// </summary>
         public float CalcArea(float radius)
         {
             try
@@ -26,14 +30,24 @@ namespace CalcShapeAreaMBX
             return 0;
         }
 
-        // Calc triangle area
+        /// <summary>
+        /// Calculating the area of a triangle
+        /// <returns>float</returns>
+        /// <param name="side1">float</param>
+        /// <param name="side2">float</param>
+        /// <param name="side3">float</param>
+        /// </summary>
         public float CalcArea(float side1, float side2, float side3)
         {
             var sideLenghts = new List<float>() { side1, side2, side3 };
             return CalcArea(sideLenghts);
         }
 
-        // Calc triangle area
+        /// <summary>
+        /// Calculating the area of a triangle
+        /// <returns>float</returns>
+        /// <param name="sideLenghts">List<float></param>
+        /// </summary>
         public float CalcArea(List<float> sideLenghts)
         {
             try
@@ -50,7 +64,12 @@ namespace CalcShapeAreaMBX
             return 0;
         }
 
-        // Calc same poligon area except triangle
+        /// <summary>
+        /// Calculation of the area of various figures except for a circle and a triangle
+        /// <returns>float</returns>
+        /// <param name="sideLenghts">List<float></param>
+        /// <param name="angles">List<float></param>
+        /// </summary>
         public float CalcArea(List<float> sideLenghts, List<float> angles)
         {
             try
@@ -66,13 +85,23 @@ namespace CalcShapeAreaMBX
 
             return 0;
         }
-        // Is triangle Rectangular
+        /// <summary>
+        /// Checking if a triangle is a right triangle
+        /// <returns>bool</returns>
+        /// <param name="side1">float</param>
+        /// <param name="side2">float</param>
+        /// <param name="side3">float</param>
+        /// </summary>
         public bool IsRectangularTriangle(float side1, float side2, float side3)
         {
             var sideLenghts = new List<float>() { side1, side2, side3 };
             return IsRectangularTriangle(sideLenghts);
         }
-        // Is triangle Rectangular
+        /// <summary>
+        /// Checking if a triangle is a right triangle
+        /// <returns>bool</returns>
+        /// <param name="sideLenghts">List<float></param>
+        /// </summary>
         public bool IsRectangularTriangle(List<float> sideLenghts)
         {
             try
