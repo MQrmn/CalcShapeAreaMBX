@@ -6,8 +6,19 @@
         public float CalcArea(float radius)
         {
             var fabric = new CircleFabric();
-            var circle = fabric.Create(radius);
-            return circle.GetArea();
+            float area = 0f;
+            try
+            {
+                var circle = fabric.Create(radius);
+                area = circle.GetArea();
+
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return area;
         }
 
         public float CalcArea(float side1, float side2, float side3)
@@ -18,9 +29,21 @@
 
         public float CalcArea(List<float> sideLenghts)
         {
+            float area = 0f;
             var fabric = new PoligonFabric();
-            var shape = fabric.GetShape(sideLenghts);
-            return shape.GetArea();
+
+            try
+            {
+                var shape = fabric.GetShape(sideLenghts);
+                area = shape.GetArea();
+
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return area;
         }
     }
 }
