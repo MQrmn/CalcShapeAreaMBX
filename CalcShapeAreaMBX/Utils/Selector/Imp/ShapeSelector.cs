@@ -1,8 +1,8 @@
 ﻿namespace CalcShapeAreaMBX
 {
-    internal class ShapeSelector
+    internal class ShapeSelector : IShapeSelector
     {
-        enum ShapeTypes
+        internal enum ShapeTypes
         {
             Undefined,
             Circle,
@@ -10,27 +10,26 @@
             Square
         }
 
-        internal int GetShapeType(float radius)
+        public ShapeTypes GetShapeType(float radius)
         {
-            return (int)ShapeTypes.Circle;
+            return ShapeTypes.Circle;
         }
 
         // Returns figures without taking angle parameters
-        internal int GetShapeType(List<float> sideLenghts)
+        public ShapeTypes GetShapeType(List<float> sideLenghts)
         {
             var sidesCount = sideLenghts.Count;
 
-            return (int)SelectShape(sidesCount, sideLenghts);
+            return SelectShape(sidesCount, sideLenghts);
         }
 
         // Returns figures with taking angle parameters
-        internal int GetShapeType(List<float> sideLenghts, List<float> angles)
+        public ShapeTypes GetShapeType(List<float> sideLenghts, List<float> angles)
         {
             var sidesCount = sideLenghts.Count;
 
-            return (int)SelectShape(sidesCount, sideLenghts, angles);
+            return SelectShape(sidesCount, sideLenghts, angles);
         }
-
 
         // Choosing shape type
         private ShapeTypes SelectShape(int sidesCount, List<float> sideLenghts, List<float> angles = null)
@@ -47,7 +46,7 @@
         private ShapeTypes SelectQuadrilateral(List<float> sideLenghts, List<float> angles = null)
         {
             if (IsSquare(sideLenghts, angles)) return ShapeTypes.Square;
-
+            
             return ShapeTypes.Undefined;
         }
 

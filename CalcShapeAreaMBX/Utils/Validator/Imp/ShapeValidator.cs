@@ -1,28 +1,28 @@
 ﻿namespace CalcShapeAreaMBX
 {
-    internal class ShapeValidator
+    internal class ShapeValidator : IShapeValidator
     {
-        internal void CheckShape(float radius)
+        public void ValidateShape(float radius)
         {
             CheckForPositive(new List<float> { radius });
         }
 
         // Checking without taking angle parameters
-        internal void CheckShape(List<float> sideLenghts)
+        public void ValidateShape(List<float> sideLenghts)
         {
             var sidesCount = sideLenghts.Count;
-            CheckArrLen(sidesCount);
+            ValidateArrLen(sidesCount);
             CheckForPositive(sideLenghts);
         }
 
         // Checking with taking angle parameters
-        internal void CheckShape(List<float> sideLenghts, List<float> angles)
+        public void ValidateShape(List<float> sideLenghts, List<float> angles)
         {
             var sidesCount = sideLenghts.Count;
             var anglesCount = angles.Count;
 
             if (sidesCount == anglesCount)
-                CheckArrLen(sidesCount);
+                ValidateArrLen(sidesCount);
             else
                 throw new ArgumentException("The number of sides does not match the number of angles");
 
@@ -31,7 +31,7 @@
         }
 
         // Checking size of arrays
-        private void CheckArrLen(int sidesCount)
+        private void ValidateArrLen(int sidesCount)
         {
             if (sidesCount < 3)
                 throw new ArgumentException("The number of sides is less than 3");
