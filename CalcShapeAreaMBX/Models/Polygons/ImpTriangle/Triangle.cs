@@ -22,12 +22,13 @@
 
         internal bool IsRectangular()
         {
-            var maxSideIndex = _sideLenghts.Max();
-            _sideLenghts.Remove(maxSideIndex);
+            var hypotenuseSide = _sideLenghts.Max();
+            var legSides = (from s in _sideLenghts where s != hypotenuseSide select s).ToList();
 
-            var isRectangular = Math.Pow(maxSideIndex, 2) == Math.Pow(_sideLenghts[0], 2) + Math.Pow(_sideLenghts[1], 2);
+            if (legSides.Count() != 2) return false;
 
-            return isRectangular;
+            return Math.Pow(hypotenuseSide, 2) == Math.Pow(legSides[0], 2) + Math.Pow(legSides[1], 2);
+
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace CalcShapeAreaMBX
 {
-    public class ShapeAreaCalculator
+    public class ShapeHandler
     {
         private IShapeValidator _validator = new ShapeValidator();
         private static IShapeSelector _selector = new ShapeSelector();
@@ -11,21 +11,19 @@ namespace CalcShapeAreaMBX
         // Calc circle area
         public float CalcArea(float radius)
         {
-
-            float area = 0f;
             try
             {
                 _validator.ValidateShape(radius);
                 var circle = _fabric.GetShape(radius);
-                area = circle.GetArea();
+                return circle.GetArea();
 
             }
-            catch (ArgumentException e)
+            catch (CalcShapeAreaException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            return area;
+            return 0;
         }
 
         // Calc triangle area
@@ -38,39 +36,57 @@ namespace CalcShapeAreaMBX
         // Calc triangle area
         public float CalcArea(List<float> sideLenghts)
         {
-            float area = 0f;
-
             try
             {
                 _validator.ValidateShape(sideLenghts);
                 var shape = _fabric.GetShape(sideLenghts);
-                area = shape.GetArea();
+                return shape.GetArea();
             }
-            catch (ArgumentException e)
+            catch (CalcShapeAreaException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            return area;
+            return 0;
         }
 
         // Calc same poligon area except triangle
         public float CalcArea(List<float> sideLenghts, List<float> angles)
         {
-            float area = 0f;
-
             try
             {
                 _validator.ValidateShape(sideLenghts, angles);
                 var shape = _fabric.GetShape(sideLenghts, angles);
-                area = shape.GetArea();
+                return shape.GetArea();
             }
-            catch (ArgumentException e)
+            catch (CalcShapeAreaException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            return area;
+            return 0;
+        }
+        // Is triangle Rectangular
+        public bool IsRectangularTriangle(float side1, float side2, float side3)
+        {
+            var sideLenghts = new List<float>() { side1, side2, side3 };
+            return IsRectangularTriangle(sideLenghts);
+        }
+        // Is triangle Rectangular
+        public bool IsRectangularTriangle(List<float> sideLenghts)
+        {
+            try
+            {
+                _validator.ValidateShape(sideLenghts);
+                var triangle = new Triangle(sideLenghts);
+                return triangle.IsRectangular();
+            }
+            catch (CalcShapeAreaException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return false;
         }
     }
 }

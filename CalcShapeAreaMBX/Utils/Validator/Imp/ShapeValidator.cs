@@ -21,10 +21,8 @@
             var sidesCount = sideLenghts.Count;
             var anglesCount = angles.Count;
 
-            if (sidesCount == anglesCount)
-                ValidateArrLen(sidesCount);
-            else
-                throw new ArgumentException("The number of sides does not match the number of angles");
+            if (sidesCount == anglesCount) ValidateArrLen(sidesCount);
+            else throw new CalcShapeAreaException("The number of sides does not match the number of angles");
 
             CheckForPositive(sideLenghts);
             CheckForPositive(angles);
@@ -33,10 +31,8 @@
         // Checking size of arrays
         private void ValidateArrLen(int sidesCount)
         {
-            if (sidesCount < 3)
-                throw new ArgumentException("The number of sides is less than 3");
-            if (sidesCount > 4)
-                throw new ArgumentException("Number of sides greater than 4");
+            if (sidesCount < 3) throw new CalcShapeAreaException("The number of sides is less than 3");
+            if (sidesCount > 4) throw new CalcShapeAreaException("Number of sides greater than 4");
         }
 
         // Checking values for positivity
@@ -44,7 +40,7 @@
         {
             foreach (var s in floats)
             {
-                if (s < 0) throw new ArgumentException("The number is negative");
+                if (s < 0) throw new CalcShapeAreaException("The number is negative");
             }
         }
     }
