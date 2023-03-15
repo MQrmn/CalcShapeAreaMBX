@@ -59,16 +59,16 @@ namespace CalcShapeAreaMBX
         {
             float area = 0f;
 
-            //try
-            //{
+            try
+            {
                 _validator.ValidateShape(sideLenghts, angles);
                 var shape = _fabric.GetShape(sideLenghts, angles);
                 area = shape.GetArea();
-            //}
-            //catch (ArgumentException e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             return area;
         }
