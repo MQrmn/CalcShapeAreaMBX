@@ -74,7 +74,8 @@
 
             return type switch
             {
-                _ => ShapeTypes.Square
+                1 => ShapeTypes.Square,
+                _ => ShapeTypes.Undefined
             };
         }
 
