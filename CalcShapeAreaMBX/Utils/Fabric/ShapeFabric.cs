@@ -54,6 +54,8 @@
         // Choosing shape type
         private ShapeTypes SelectShape(int sidesCount, List<float> sideLenghts, List<float> angles = null)
         {
+            var selector = new ShapeSelector();
+
             return sidesCount switch
             {
                 4 => SelectQuadrilateral(sideLenghts, angles),
