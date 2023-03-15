@@ -43,7 +43,7 @@
         }
 
         // Chosing a quadrilateral shape 
-        private ShapeTypes SelectQuadrilateral(List<float> sideLenghts, List<float> angles = null)
+        private ShapeTypes SelectQuadrilateral(List<float> sideLenghts, List<float>? angles = null)
         {
             if (IsSquare(sideLenghts, angles)) return ShapeTypes.Square;
             
@@ -51,11 +51,11 @@
         }
 
         // Checking is sahpe a square
-        private bool IsSquare(List<float> sideLenghts, List<float> angles)
+        private bool IsSquare(List<float> sideLenghts, List<float>? angles)
         {
             var rightAngles = from a in angles where a == 90 select a;
             if (rightAngles.Count() < 4) return false;
-            var maxSide = angles.Max();
+            var maxSide = sideLenghts.Max();
             var identSides = from s in sideLenghts where s == maxSide select s;
             if (identSides.Count() < 4) return false;
 

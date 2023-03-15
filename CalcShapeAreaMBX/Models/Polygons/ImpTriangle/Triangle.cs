@@ -2,8 +2,9 @@
 {
     internal class Triangle : Polygon
     {
-        internal Triangle(List<float> sideLenghts) : base(sideLenghts)
+        internal Triangle(List<float> sideLenghts)
         {
+            _sideLenghts = sideLenghts;
         }
 
         internal override float GetArea()

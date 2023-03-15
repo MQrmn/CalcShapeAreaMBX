@@ -24,17 +24,18 @@
 
         public Shape? GetShape(List<float> sideLenghts, List<float> angles)
         {
-            var shapeType = _selector.GetShapeType(sideLenghts);
+            var shapeType = _selector.GetShapeType(sideLenghts, angles);
 
             return CreateShape(shapeType, sideLenghts, angles);
         }
 
 
 
-        private Shape? CreateShape(ShapeSelector.ShapeTypes shapeType, List<float> param1, object param2 = null)
+        private Shape? CreateShape(ShapeSelector.ShapeTypes shapeType, List<float> param1, List<float> param2 = null)
         {
             return shapeType switch
             {
+                ShapeSelector.ShapeTypes.Square => new Square(param1, param2),
                 ShapeSelector.ShapeTypes.Triangle => new Triangle(param1),
                 ShapeSelector.ShapeTypes.Circle => new Circle(param1[0]),
                 _ => null

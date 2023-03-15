@@ -42,5 +42,20 @@ namespace Tests
 
             Assert.IsTrue(actualArea);
         }
+
+        [TestMethod]
+        public void CalcSquare()
+        {
+            var sideLenghts = new List<float>() { 4, 4, 4, 4 };
+            var angles = new List<float>() { 90, 90, 90, 90 };
+            
+
+            var shapeAreaCalculator = new ShapeAreaCalculator();
+
+            var expectedArea = 16;
+            var actualArea = shapeAreaCalculator.CalcArea(sideLenghts, angles);
+
+            Assert.AreEqual(expectedArea, actualArea);
+        }
     }
 }
