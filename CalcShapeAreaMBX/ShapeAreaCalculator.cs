@@ -5,11 +5,11 @@
 
         public float CalcArea(float radius)
         {
-            var fabric = new CircleFabric();
+            var fabric = new ShapeFabric();
             float area = 0f;
             try
             {
-                var circle = fabric.Create(radius);
+                var circle = fabric.GetShape(radius);
                 area = circle.GetArea();
 
             }
@@ -30,7 +30,7 @@
         public float CalcArea(List<float> sideLenghts)
         {
             float area = 0f;
-            var fabric = new PoligonFabric();
+            var fabric = new ShapeFabric();
 
             try
             {

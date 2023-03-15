@@ -1,12 +1,18 @@
 ﻿namespace CalcShapeAreaMBX
 {
-    internal class PoligonFabric
+    internal class ShapeFabric
     {
         enum ShapeTypes
         {
             Undefined,
             Triangle,
             Square
+        }
+
+        internal Shape GetShape(float radius)
+        {
+            CheckForPositive(new List<float> { radius });
+            return new Circle(radius);
         }
 
         // Returns figures without taking angle parameters
