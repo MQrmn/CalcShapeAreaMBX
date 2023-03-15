@@ -44,9 +44,7 @@
         // Chosing a quadrilateral shape 
         private ShapeTypes SelectQuadrilateral(List<float> sideLenghts)
         {
-            var selector = new QuadrilateralShapeSelector();
-
-
+            var selector = new ShapeSelector();
 
             return ShapeTypes.Square;
         }
