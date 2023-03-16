@@ -2,6 +2,7 @@
 {
     internal class ShapeValidator : IShapeValidator
     {
+        // Checking one float
         public void ValidateShape(float radius)
         {
             CheckForPositive(new List<float> { radius });

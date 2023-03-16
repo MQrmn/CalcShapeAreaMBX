@@ -20,7 +20,6 @@ namespace CalcShapeAreaMBX
                 _validator.ValidateShape(radius);
                 var circle = _fabric.GetShape(radius);
                 return circle.GetArea();
-
             }
             catch (CalcShapeAreaException e)
             {
